@@ -1,16 +1,84 @@
-# React + Vite
+# 👤 User Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **🏠 Dashboard**: A professional landing page introducing the system.
+- **👥 User Directory**: View a complete list of users with detailed information.
+- **🔍 Smart Search**: Easily find users by name or department.
+- **➕ Add User**: Seamlessly add new users to the system.
+- **✏️ Edit Profile**: Update existing user information with ease.
+- **📄 Detailed View**: Dedicated profile pages for each user.
+- **📱 Fully Responsive**: Optimized for desktops, tablets, and mobile devices.
+- **✨ Modern UI/UX**: Clean design with smooth transitions and glassmorphism elements.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend**: React 19 (Hooks, Router)
+- **Styling**: Tailwind CSS 4
+- **API Handling**: Axios
+- **Icons**: React Icons (Lucide)
+- **Build Tool**: Vite
+- **Data Source**: [DummyJSON API](https://dummyjson.com/)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📦 Installation & Setup
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/tusharbabar/User-Managment-System.git
+   ```
+
+2. **Navigate to the project directory**:
+   ```bash
+   cd User-Managment-System
+   ```
+
+3. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+4. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+├── components/   # Reusable UI components
+├── pages/        # Main application pages (Home, UserList, etc.)
+├── assets/       # Images and global styles
+├── App.jsx       # Main Routing configuration
+└── main.jsx      # Entry point
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! If you'd like to improve the project, please follow these steps:
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git checkout -b feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+**Developed with ❤️ by [Tushar Babar](https://github.com/tusharbabar)**
