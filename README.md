@@ -4,7 +4,7 @@
 ## 🚀 Live Demo
 
 🔗 **Live Application (Vercel):**  
-👉 [https://user-managment-system-m8uuwgwal-tushar-babars-projects.vercel.app/](https://user-managment-system-m8uuwgwal-tushar-babars-projects.vercel.app/)
+👉 [https://user-managment-system-m8uuwgwal-tushar-babars-projects.vercel.app/](https://user-managment-system-git-main-tushar-babars-projects.vercel.app )
 
 ---
 
