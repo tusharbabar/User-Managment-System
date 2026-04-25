@@ -126,7 +126,7 @@ const UserList = () => {
               {currentUsers.length > 0 ? (
                 currentUsers.map(user => (
                   <tr key={user.id}>
-                    <td>
+                    <td data-label="Name">
                       <div className="flex items-center gap-2">
                         <img 
                           src={user.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.firstName + ' ' + user.lastName)}&background=random`} 
@@ -136,14 +136,14 @@ const UserList = () => {
                         <span style={{fontWeight: 500}}>{user.firstName} {user.lastName}</span>
                       </div>
                     </td>
-                    <td>{user.email}</td>
-                    <td>{user.phone}</td>
-                    <td>
+                    <td data-label="Email">{user.email}</td>
+                    <td data-label="Phone">{user.phone}</td>
+                    <td data-label="Role">
                       <span className={`badge ${user.role === 'admin' ? 'admin' : ''}`}>
                         {user.role}
                       </span>
                     </td>
-                    <td>
+                    <td data-label="Actions">
                       <div className="action-buttons">
                         <Link to={`/users/${user.id}`} className="icon-btn" title="View Details">
                           <FiEye />
@@ -156,6 +156,7 @@ const UserList = () => {
                         </button>
                       </div>
                     </td>
+
                   </tr>
                 ))
               ) : (
