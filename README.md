@@ -81,4 +81,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 
-**Developed with ❤️ by [Tushar Babar](https://github.com/tusharbabar)**
+**Developed with  by [Tushar Babar](https://github.com/tusharbabar)**
