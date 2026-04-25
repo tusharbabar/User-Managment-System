@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FiEdit, FiTrash2, FiEye, FiSearch, FiPlus } from 'react-icons/fi';
+import { FiEdit, FiTrash2, FiEye, FiSearch, FiPlus, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { getUsers, deleteUser } from '../api';
 
 const UserList = () => {
@@ -9,6 +9,8 @@ const UserList = () => {
   const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [roleFilter, setRoleFilter] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const usersPerPage = 10;
   
   // Modal state
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -18,6 +20,11 @@ const UserList = () => {
   useEffect(() => {
     fetchUsers();
   }, []);
+
+  // Reset to page 1 when search or filter changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, roleFilter]);
 
   const fetchUsers = async () => {
     try {
@@ -59,6 +66,14 @@ const UserList = () => {
     const matchesRole = roleFilter ? user.role === roleFilter : true;
     return matchesSearch && matchesRole;
   });
+
+  // Pagination Logic
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
+  const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div>
@@ -108,8 +123,8 @@ const UserList = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredUsers.length > 0 ? (
-                filteredUsers.map(user => (
+              {currentUsers.length > 0 ? (
+                currentUsers.map(user => (
                   <tr key={user.id}>
                     <td>
                       <div className="flex items-center gap-2">
@@ -152,6 +167,57 @@ const UserList = () => {
               )}
             </tbody>
           </table>
+        </div>
+      )}
+
+      {!loading && filteredUsers.length > 0 && (
+        <div className="pagination-container">
+          <div className="pagination-info">
+            Showing <strong>{indexOfFirstUser + 1}</strong> to <strong>{Math.min(indexOfLastUser, filteredUsers.length)}</strong> of <strong>{filteredUsers.length}</strong> users
+          </div>
+          <div className="pagination-controls">
+            <button 
+              className="pagination-btn" 
+              onClick={() => paginate(currentPage - 1)}
+              disabled={currentPage === 1}
+              title="Previous Page"
+            >
+              <FiChevronLeft />
+            </button>
+            
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map(number => {
+              if (
+                number === 1 || 
+                number === totalPages || 
+                (number >= currentPage - 1 && number <= currentPage + 1)
+              ) {
+                return (
+                  <button
+                    key={number}
+                    onClick={() => paginate(number)}
+                    className={`pagination-btn ${currentPage === number ? 'active' : ''}`}
+                  >
+                    {number}
+                  </button>
+                );
+              } else if (
+                (number === currentPage - 2 && number > 1) || 
+                (number === currentPage + 2 && number < totalPages)
+              ) {
+                return <span key={number} style={{padding: '0 8px', color: 'var(--text-secondary)'}}>...</span>;
+              }
+              return null;
+            })}
+
+            <button 
+              className="pagination-btn" 
+              onClick={() => paginate(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              title="Next Page"
+            >
+              <FiChevronRight />
+            </button>
+          </div>
         </div>
       )}
 
